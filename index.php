@@ -150,10 +150,6 @@
 			else							{return $old = "N/A";}
 		}
 	
-function topla($sayi1) {
-$sonuc = $sayi1 + 24;
-return $sonuc;
-}
 		$year = date("Y");
 		$p = 0;
 		$control = "x";
@@ -499,14 +495,10 @@ return $sonuc;
 	</script>
 <!-- list end -->
 
-
-
-
-
 	<div class="container">
 		<div class="row first-row">
 			<div class="col-xs-12 jumbotron">
-				<h1 class="text-center">Arananlar Listesi İstatistiki Grafikler<small>v1</small></h1><?php echo $year ."-". $person[0][2]."-".$person[0][6]; ?>
+				<h1 class="text-center">Arananlar Listesi İstatistiki Grafikler<small>v1</small></h1>
 				<p>Aşağıdaki veriler Türkiye Cumhuriyeti İçişleri Bakanlığı tarafından <a href="http://terorarananlar.pol.tr" rel="nofollow" target="_blank">terorarananlar.pol.tr</a> adresinde "Terör Arananlar" adıyla yayınlanan listelere göre hazırlanmıştır. Veriler doğrudan bu siteden çekildiği için daima günceldir. Listeden herhangi bir ad çıkartıldığında ya da eklendiğinde kişi ve kişiyle ilgili veriler otomatik ve anlık olarak güncellenmektedir.</p>
 				<p>Yayınlanan içerikteki doğum yeri bilgileri <a class="tip" data-toggle="tooltip" data-placement="top" title="Sadece Kahramanmaraş için bile 'K.maraş', 'K. maraş', 'K.MARAŞ', 'Kahramanmaras' gibi birçok verinin yer alması gibi.">düzenlilikten uzak</a> olduğu için şehirler ile ilgili bilgilerde otomatik <a class="tip" data-toggle="tooltip" data-placement="top" title="Şehir adlarının ilk harflerinin büyük diğerlerinin küçük yazılması, Türkçe karakter hatalarının giderilmesi, farklı şekillerde yazımların tek çatıda birleştirilmesi gibi.">düzenleme işlemleri</a> yapılmış ancak <strong>bazı hatalar giderilememiştir</strong>.</p>
 				<p>Çalışma, Creative Commons Lisansı (<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="tip" data-toggle="tooltip" data-placement="top" title="Attribution, NonCommercial, ShareAlike 4.0 International">CC BY-NC-SA 4.0</a>) ile lisanslanmıştır. <a xmlns:cc="http://creativecommons.org/ns#" href="http://mertskaplan.com" property="cc:attributionName" rel="cc:attributionURL">Mert Salih Kaplan</a> adına atıfta bulunmak ya da <a xmlns:dct="http://purl.org/dc/terms/" href="http://teror.mertskaplan.com" rel="dct:source">http://teror.mertskaplan.com</a> adresini kaynak göstermek şartıyla ticari olmayan kullanımlarda özgürce kullanılabilir ve aynı ya da daha özgür bir lisans altında yayınlanması şartıyla özgürce çatallandırılabilir.</p>
