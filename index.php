@@ -190,7 +190,7 @@ return $sonuc;
 					
 					$old = $year - $date;
 						$old = old($old);
-					$person[$p] = array("$name", "$city", "$date", "$organization", "red", "Kırmızı", "$old");
+					$person[$p] = array("$name", "$city", "$date", "$organization", "#DC3912", "Kırmızı", "$old");
 					$p++;
 				}
 				$x = $x+30;
@@ -221,7 +221,7 @@ return $sonuc;
 					
 					$old = $year - $date;
 						$old = old($old);
-					$person[$p] = array("$name", "$city", "$date", "$organization", "blue", "Mavi", "$old");
+					$person[$p] = array("$name", "$city", "$date", "$organization", "#3366CC", "Mavi", "$old");
 					$p++;
 				}
 				$x = $x+30;
@@ -252,7 +252,7 @@ return $sonuc;
 					
 					$old = $year - $date;
 						$old = old($old);
-					$person[$p] = array("$name", "$city", "$date", "$organization", "green", "Yeşil", "$old");
+					$person[$p] = array("$name", "$city", "$date", "$organization", "#109618", "Yeşil", "$old");
 					$p++;
 				}
 				$x = $x+30;
@@ -283,7 +283,7 @@ return $sonuc;
 					
 					$old = $year - $date;
 						$old = old($old);
-					$person[$p] = array("$name", "$city", "$date", "$organization", "orange", "Turuncu", "$old");
+					$person[$p] = array("$name", "$city", "$date", "$organization", "#FF9900", "Turuncu", "$old");
 					$p++;
 				}
 				$x = $x+30;
@@ -314,7 +314,7 @@ return $sonuc;
 					
 					$old = $year - $date;
 						$old = old($old);
-					$person[$p] = array("$name", "$city", "$date", "$organization", "grey", "Gri", "$old");
+					$person[$p] = array("$name", "$city", "$date", "$organization", "#808080", "Gri", "$old");
 					$p++;
 				}
 				$x = $x+30;
@@ -441,8 +441,7 @@ return $sonuc;
 			var options = {
 				title: 'Aranma Renklerine Göre Kişi Sayısı',
 				pieHole: 0.4,
-				chartArea:{left:10,right:0,top:10,bottom:0,width:'100%',height:'90%'},
-				colors:['<?php echo $color_name[0]; ?>','<?php echo $color_name[1]; ?>','<?php echo $color_name[2]; ?>','<?php echo $color_name[3]; ?>','<?php echo $color_name[4]; ?>']
+				chartArea:{left:10,right:0,top:10,bottom:0,width:'100%',height:'90%'}
 			};
 			var chart = new google.visualization.PieChart(document.getElementById('old'));
 			chart.draw(data, options);
