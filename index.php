@@ -576,7 +576,7 @@ return $sonuc;
 		</div>
 		<div class="row github">
 			<p class="code text-center">
-				<a href="http://mertskaplan.com/" target="_blank">mertskaplan</a> tarafından <a class="tip" data-toggle="tooltip" data-placement="top" title="PHP, HTML, CSS">❤</a> ile kodlandı. | <a href="https://github.com/mertskaplan/Seen-Alert" target="_blank">GitHub</a>
+				<a href="http://mertskaplan.com/" target="_blank">mertskaplan</a> tarafından <a class="tip" data-toggle="tooltip" data-placement="top" title="PHP, HTML, CSS, JS">❤</a> ile kodlandı. | <a href="https://github.com/mertskaplan/Arananlar-Listesi-statistiki-Grafikler" target="_blank">GitHub</a>
 			</p>
 		</div>
 	</div>
