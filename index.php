@@ -330,7 +330,7 @@
 				elseif	($f == 13) {$x = 484;}
 				elseif	($f == 14) {$x = 521;}
 				elseif	($f == 15) {$x = 555;}
-				elseif	($f == 16) {$x = 288;}
+				elseif	($f == 16) {$x = 588;}
 				elseif	($f == 17) {$x = 624;}
 				else			   {$x = 9999;}
 			}
