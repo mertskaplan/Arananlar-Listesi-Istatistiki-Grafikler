@@ -192,7 +192,7 @@
 				$x = $x+30;
 			}
 			
-			$x = 0;
+			$x = 1;
 			while($blue_control == "x") {
 
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/mavitamliste.aspx?Paged=TRUE&p_ID=$x";
@@ -286,6 +286,7 @@
 			}
 			
 			$x = 0;
+			$f = 0; // f for fuck your code :@
 			while($grey_control == "x") {
 
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/gritamliste.aspx?Paged=TRUE&p_ID=$x";
@@ -313,7 +314,25 @@
 					$person[$p] = array("$name", "$city", "$date", "$organization", "#808080", "Gri", "$old");
 					$p++;
 				}
-				$x = $x+30;
+				$f++;
+				if		($f ==  1) {$x = 84;}
+				elseif	($f ==  2) {$x = 117;}
+				elseif	($f ==  3) {$x = 147;}
+				elseif	($f ==  4) {$x = 177;}
+				elseif	($f ==  5) {$x = 207;}
+				elseif	($f ==  6) {$x = 241;}
+				elseif	($f ==  7) {$x = 272;}
+				elseif	($f ==  8) {$x = 304;}
+				elseif	($f ==  9) {$x = 342;}
+				elseif	($f == 10) {$x = 382;}
+				elseif	($f == 11) {$x = 422;}
+				elseif	($f == 12) {$x = 452;}
+				elseif	($f == 13) {$x = 484;}
+				elseif	($f == 14) {$x = 521;}
+				elseif	($f == 15) {$x = 555;}
+				elseif	($f == 16) {$x = 288;}
+				elseif	($f == 17) {$x = 624;}
+				else			   {$x = 9999;}
 			}
 			$control = "xx";
 		}
