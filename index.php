@@ -183,6 +183,8 @@
 					$y++;
 					$organization = $info[$y];
 					$y++;
+					$status = $info[$y];
+					$y++;
 					
 					$old = $year - $date;
 						$old = old($old);
@@ -213,6 +215,8 @@
 						$date = $city_date[1];
 					$y++;
 					$organization = $info[$y];
+					$y++;
+					$status = $info[$y];
 					$y++;
 					
 					$old = $year - $date;
@@ -245,6 +249,8 @@
 					$y++;
 					$organization = $info[$y];
 					$y++;
+					$status = $info[$y];
+					$y++;
 					
 					$old = $year - $date;
 						$old = old($old);
@@ -275,6 +281,8 @@
 						$date = $city_date[1];
 					$y++;
 					$organization = $info[$y];
+					$y++;
+					$status = $info[$y];
 					$y++;
 					
 					$old = $year - $date;
@@ -307,6 +315,8 @@
 						$date = $city_date[1];
 					$y++;
 					$organization = $info[$y];
+					$y++;
+					$status = $info[$y];
 					$y++;
 					
 					$old = $year - $date;
