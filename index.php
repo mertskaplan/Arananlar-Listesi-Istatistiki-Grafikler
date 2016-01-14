@@ -4,15 +4,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Arananlar Listesi İstatistiki Grafikler</title>	
+	<title>Arananlar Listesi İstatistiki Grafikler</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('[data-toggle="tooltip"]').tooltip();   
+			$('[data-toggle="tooltip"]').tooltip();
 		});
 	</script>
 	<style>
@@ -94,14 +94,14 @@
 <body>
 
 	<?php
-		header ('Content-type: text/html; charset=utf-8'); 
-		
+		header ('Content-type: text/html; charset=utf-8');
+
 		function find($first, $latest, $text) {
 			@preg_match_all('/' . preg_quote($first, '/') .
 			'(.*?)'. preg_quote($latest, '/').'/i', $text, $m);
 			return @$m[1];
 		}
-		
+
 		function removeKeys(array $array) {
 			$array = array_values($array);
 			foreach ($array as & $value) {
@@ -111,25 +111,25 @@
 			}
 			return $array;
 		}
-		
+
 		$sletter = array('ç', 'ğ', 'i', 'ı', 'ö', 'ş', 'ü');
-		$bletter = array('Ç', 'Ğ', 'İ', 'I', 'Ö', 'Ş', 'Ü'); 
+		$bletter = array('Ç', 'Ğ', 'İ', 'I', 'Ö', 'Ş', 'Ü');
 
 		function tr_strtolower($owertext) {
-			global $sletter, $bletter;   		
+			global $sletter, $bletter;
 			return strtolower(str_replace($bletter, $sletter, $owertext));
 		}
-		
-		function tr_strtoupper($uppertext) {   
-			global $sletter, $bletter;    		
+
+		function tr_strtoupper($uppertext) {
+			global $sletter, $bletter;
 			return strtoupper(str_replace($sletter, $bletter, $uppertext));
 		}
 
 		function tr_ucfirst($ucfirsttext, $e='utf-8') {
-			$ik = tr_strtoupper(mb_substr($ucfirsttext, 0, 1, $e), $e);      
+			$ik = tr_strtoupper(mb_substr($ucfirsttext, 0, 1, $e), $e);
 			return $ik.mb_substr($ucfirsttext, 1, mb_strlen($ucfirsttext, $e), $e);
 		}
-		
+
 		function edit_city($c) {
 			if		($c == "Suriye afrin")	{return $city = "Suriye Afrin";}
 			elseif	($c == "K.maraş")		{return $city = "Kahramanmaraş";}
@@ -149,7 +149,7 @@
 			elseif	($o > 44)				{return $old = "45+";}
 			else							{return $old = "N/A";}
 		}
-	
+
 		$year = date("Y");
 		$p = 0;
 		$control = "x";
@@ -158,21 +158,21 @@
 		$green_control = "x";
 		$orange_control = "x";
 		$grey_control = "x";
-		
+
 		while($control == "x") {
-			
+
 			$x = 0;
 			while($red_control == "x") {
 
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/kirmizitamliste.aspx?Paged=TRUE&p_ID=$x";
 				$content = file_get_contents($site);
 				$info = find('<td class="ms-vb2">', '</td>', $content);
-				
+
 				if (empty($info[0])) {$red_control = "xx";}
-				
+
 				$y = 0;
 				while(isset($info[$y])) {
-					
+
 					$name = $info[$y];
 					$y++;
 					$city_date = $info[$y];
@@ -185,7 +185,7 @@
 					$y++;
 					$status = $info[$y];
 					$y++;
-					
+
 					$old = $year - $date;
 						$old = old($old);
 					$person[$p] = array("$name", "$city", "$date", "$organization", "#DC3912", "Kırmızı", "$old");
@@ -193,19 +193,19 @@
 				}
 				$x = $x+30;
 			}
-			
+
 			$x = 1;
 			while($blue_control == "x") {
 
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/mavitamliste.aspx?Paged=TRUE&p_ID=$x";
 				$content = file_get_contents($site);
 				$info = find('<td class="ms-vb2">', '</td>', $content);
-				
+
 				if (empty($info[0])) {$blue_control = "xx";}
-				
+
 				$y = 0;
 				while(isset($info[$y])) {
-					
+
 					$name = $info[$y];
 					$y++;
 					$city_date = $info[$y];
@@ -218,7 +218,7 @@
 					$y++;
 					$status = $info[$y];
 					$y++;
-					
+
 					$old = $year - $date;
 						$old = old($old);
 					$person[$p] = array("$name", "$city", "$date", "$organization", "#3366CC", "Mavi", "$old");
@@ -226,19 +226,19 @@
 				}
 				$x = $x+30;
 			}
-			
+
 			$x = 0;
 			while($green_control == "x") {
 
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/yesiltamliste.aspx?Paged=TRUE&p_ID=$x";
 				$content = file_get_contents($site);
 				$info = find('<td class="ms-vb2">', '</td>', $content);
-				
+
 				if (empty($info[0])) {$green_control = "xx";}
-				
+
 				$y = 0;
 				while(isset($info[$y])) {
-					
+
 					$name = $info[$y];
 					$y++;
 					$city_date = $info[$y];
@@ -251,7 +251,7 @@
 					$y++;
 					$status = $info[$y];
 					$y++;
-					
+
 					$old = $year - $date;
 						$old = old($old);
 					$person[$p] = array("$name", "$city", "$date", "$organization", "#109618", "Yeşil", "$old");
@@ -259,19 +259,19 @@
 				}
 				$x = $x+30;
 			}
-			
+
 			$x = 0;
 			while($orange_control == "x") {
 
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/turuncutamliste.aspx?Paged=TRUE&p_ID=$x";
 				$content = file_get_contents($site);
 				$info = find('<td class="ms-vb2">', '</td>', $content);
-				
+
 				if (empty($info[0])) {$orange_control = "xx";}
-				
+
 				$y = 0;
 				while(isset($info[$y])) {
-					
+
 					$name = $info[$y];
 					$y++;
 					$city_date = $info[$y];
@@ -284,7 +284,7 @@
 					$y++;
 					$status = $info[$y];
 					$y++;
-					
+
 					$old = $year - $date;
 						$old = old($old);
 					$person[$p] = array("$name", "$city", "$date", "$organization", "#FF9900", "Turuncu", "$old");
@@ -292,7 +292,7 @@
 				}
 				$x = $x+30;
 			}
-			
+
 			$x = 0;
 			$f = 0; // f for fuck your code :@
 			while($grey_control == "x") {
@@ -300,12 +300,12 @@
 				$site = "http://www.terorarananlar.pol.tr/detaylar/Sayfalar/gritamliste.aspx?Paged=TRUE&p_ID=$x";
 				$content = file_get_contents($site);
 				$info = find('<td class="ms-vb2">', '</td>', $content);
-				
+
 				if (empty($info[0])) {$grey_control = "xx";}
-				
+
 				$y = 0;
 				while(isset($info[$y])) {
-					
+
 					$name = $info[$y];
 					$y++;
 					$city_date = $info[$y];
@@ -318,7 +318,7 @@
 					$y++;
 					$status = $info[$y];
 					$y++;
-					
+
 					$old = $year - $date;
 						$old = old($old);
 					$person[$p] = array("$name", "$city", "$date", "$organization", "#808080", "Gri", "$old");
@@ -352,29 +352,29 @@
 		arsort($org_name_array_2);
 		$org_count = removeKeys($org_name_array_2);
 		$org_name = array_keys($org_name_array_2);
-		
+
 		$city_name_array = array_column($person, 1);
 		$city_name_array_2 = array_count_values($city_name_array);
 		$city_count = removeKeys($city_name_array_2);
 		$city_name = array_keys($city_name_array_2);
-		
+
 		$color_name_array = array_column($person, 4);
 		$color_name_array_2 = array_count_values($color_name_array);
 		$color_count = removeKeys($color_name_array_2);
 		$color_name = array_keys($color_name_array_2);
-	
+
 		$colortr_name_array = array_column($person, 5);
 		$colortr_name_array_2 = array_count_values($colortr_name_array);
 		$colortr_name = array_keys($colortr_name_array_2);
-		
+
 		$old_name_array = array_column($person, 6);
 		$old_name_array_2 = array_count_values($old_name_array);
 		arsort($old_name_array_2);
 		$old_count = removeKeys($old_name_array_2);
 		$old_name = array_keys($old_name_array_2);
-	
+
 	?>
-	
+
 <!-- for organization -->
 	<script type="text/javascript">
 		google.load("visualization", "1", {packages:["corechart"]});
@@ -382,7 +382,7 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
 				['Örgüt',							'Aranan Sayısı'],
-				<?php 
+				<?php
 					for ($x=0; isset($org_name[$x]); $x++) {
 						echo "['". $org_name[$x] . "',". $org_count[$x] ."],";
 					}
@@ -406,7 +406,7 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
 				['Örgüt',							'Aranan Sayısı'],
-				<?php 
+				<?php
 					for ($x=1; isset($org_name[$x]); $x++) {
 						echo "['". $org_name[$x] . "',". $org_count[$x] ."],";
 					}
@@ -430,12 +430,12 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
 				['Aranma Derecesi', 'Kişi'],
-				<?php 
+				<?php
 					for ($x=0; isset($color_name[$x]); $x++) {
 						echo "['". $colortr_name[$x] . "',". $color_count[$x] ."],";
 					}
 				?>
-				
+
 			]);
 			var options = {
 				title: 'Aranma Renklerine Göre Kişi Sayısı',
@@ -456,12 +456,12 @@
 		function drawChart() {
 			var data = google.visualization.arrayToDataTable([
 				['Yaş Aralığı', 'Kişi'],
-				<?php 
+				<?php
 					for ($x=0; isset($old_name[$x]); $x++) {
 						echo "['". $old_name[$x] . "',". $old_count[$x] ."],";
 					}
 				?>
-				
+
 			]);
 			var options = {
 				title: 'Aranma Renklerine Göre Kişi Sayısı',
@@ -482,7 +482,7 @@
 		function drawMarkersMap() {
 			var data = google.visualization.arrayToDataTable([
 				['Şehir:',   'Kişi'],
-				<?php 
+				<?php
 					for ($x=0; isset($city_name[$x]); $x++) {
 						echo "['". $city_name[$x] . "',". $city_count[$x] ."],";
 					}
@@ -586,11 +586,11 @@
 		<div class="row third-row">
 			<h2>Listeyle ilgili bazı haberler</h2>
 			<blockquote>
-				<h3><a href="www.cumhuriyet.com.tr/haber/turkiye/399405/Madimak_katilleri_listede_yok.html">Madımak katilleri listede yok</a></h3>
+				<h3><a href="www.cumhuriyet.com.tr/haber/turkiye/399405/Madimak_katilleri_listede_yok.html" target="_blank">Madımak katilleri listede yok</a></h3>
 				<footer>30 Ekim 2015 Cuma | <cite title="Cumhuriyet Gazetesi">Cumhuriyet Gazetesi - Alican Uludağ</cite></footer>
 			</blockquote>
 			<blockquote>
-				<h3><a href="http://tr.sputniknews.com/turkiye/20151030/1018705965/yesil-icisleribakanligi-teror-liste-.html">Devlet artık 'Yeşil'i aramıyor mu?</a></h3>
+				<h3><a href="http://tr.sputniknews.com/turkiye/20151030/1018705965/yesil-icisleribakanligi-teror-liste-.html" target="_blank">Devlet artık 'Yeşil'i aramıyor mu?</a></h3>
 				<footer>30 Ekim 2015 Cuma | <cite title="Cumhuriyet Gazetesi">Sputnik Türkiye</cite></footer>
 			</blockquote>
 		</div>
@@ -601,6 +601,6 @@
 		</div>
 	</div>
 
-	
+
   </body>
 </html>
